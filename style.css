@@ -1,0 +1,98 @@
+body{
+    background-color: rgb(1, 1, 102); /* o 1E1A2F */
+    font-family: Arcade;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.botones{
+   
+    display: grid;
+    grid-template-columns: repeat(2, 190px); 
+    grid-template-rows: repeat(2, 180px); 
+    gap: 0; 
+    border: solid red;
+    margin-top: 20px; 
+    margin-bottom: 50px;
+    
+}
+.centrado {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+
+h1{
+    background-image: linear-gradient(to right, rgb(255, 194, 27), rgb(122, 94, 175)); 
+    background-clip: text; 
+    color: transparent; 
+}
+
+.h2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 60%;
+    border: solid red;
+}
+
+
+h2{
+    
+    color: rgb(209, 255, 2);
+    text-align: center;
+}
+
+
+
+p{
+    color: rgb(209, 255, 2);
+    border: solid red;
+    text-align: center;
+}
+
+.boton{
+    width: 100%; 
+    height: 100%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    font-size: 16px; 
+    filter: brightness(100%);
+    
+    
+}
+
+.boton[data='rojo']{    
+    background-color: rgb(202, 2, 2);
+    border-top-left-radius: 100%;
+    
+}
+.boton[data='verde']{
+    background-color: #039603;
+    border-top-right-radius: 100%;
+}
+.boton[data='azul']{
+    background-color: #020294;
+    border-bottom-left-radius: 100%;
+}
+.boton[data='amarillo']{
+    background-color: rgb(199, 199, 1);
+    border-bottom-right-radius: 100%;
+}  
+
+.boton:active {
+    filter: brightness(1.5); /* Aumenta el brillo al 150% */
+}
+
+.boton.activo {
+    filter: brightness(1.5); /* Aumenta el brillo al 150% */
+}
+
+@font-face {
+    font-family: Arcade;
+    src: url(./ARCADE_N.TTF);
+}
