@@ -8,7 +8,6 @@ body{
 }
 
 .botones{
-   
     display: grid;
     grid-template-columns: repeat(2, 190px); 
     grid-template-rows: repeat(2, 180px); 
@@ -26,10 +25,10 @@ body{
 
 
 h1{
-    background-image: linear-gradient(to right, rgb(255, 194, 27), rgb(122, 94, 175)); 
     background-clip: text; 
-    color: transparent; 
+    color: rgb(209, 255, 2);; 
 }
+
 
 .h2{
     display: flex;
@@ -41,11 +40,9 @@ h1{
 
 
 h2{
-    
     color: rgb(209, 255, 2);
     text-align: center;
 }
-
 
 
 p{
@@ -53,6 +50,7 @@ p{
     border: solid red;
     text-align: center;
 }
+
 
 .boton{
     width: 100%; 
@@ -62,37 +60,127 @@ p{
     align-items: center; 
     font-size: 16px; 
     filter: brightness(100%);
-    
+    border: solid black 3px;
+    perspective: 1000px; 
+    transform-style: preserve-3d;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    cursor: pointer;
     
 }
 
+.boton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: translateZ(-10px); /* Profundidad 3D */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+/* Efecto hover */
+.boton:hover::before {
+    transform: translateZ(-5px); /* Menos profundidad al hacer hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Efecto active (clic) */
+.boton:active {
+    transform: translateY(5px); /* Simula que el botón se presiona */
+}
+
+.boton.activo::before {
+    transform: translateZ(-15px); /* Más profundidad al estar activo */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+
+}
+
+/* Efecto activo (clase .activo) */
+.boton.activo {
+    filter: brightness(1.5); /* Aumenta el brillo al 150% */
+    transform: translateY(5px); /* Simula que el botón se presiona */
+}
+
+.boton.activo::before {
+    transform: translateZ(-15px); /* Más profundidad al estar activo */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+
+}
+
 .boton[data='rojo']{    
-    background-color: rgb(202, 2, 2);
+    background-color: rgb(153, 0, 0);
     border-top-left-radius: 100%;
     
 }
 .boton[data='verde']{
-    background-color: #039603;
+    background-color: #016e01;
     border-top-right-radius: 100%;
 }
 .boton[data='azul']{
-    background-color: #020294;
+    background-color: #00005e;
     border-bottom-left-radius: 100%;
 }
 .boton[data='amarillo']{
-    background-color: rgb(199, 199, 1);
+    background-color: rgb(124, 124, 0);
     border-bottom-right-radius: 100%;
-}  
+}
 
 .boton:active {
-    filter: brightness(1.5); /* Aumenta el brillo al 150% */
+    filter: brightness(2); /* Aumenta el brillo al 150% */
 }
 
 .boton.activo {
-    filter: brightness(1.5); /* Aumenta el brillo al 150% */
+    filter: brightness(2); /* Aumenta el brillo al 150% */
 }
 
 @font-face {
     font-family: Arcade;
     src: url(./ARCADE_N.TTF);
+}
+
+.boton.deshabilitado {
+    pointer-events: none; /* Deshabilita los eventos de clic */
+}
+
+.iniciar.oculto {
+    display: none; /* Oculta el botón y no reserva espacio */
+}
+
+.iniciar{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: rgb(209, 255, 2);
+    color: #3b0063;
+    font-size: Arcade;
+    font-family: inherit;
+    padding: 2rem 3rem;
+    cursor: pointer;
+}
+
+.reiniciar.oculto {
+    display: none; /* Oculta el botón y no reserva espacio */
+} 
+
+.reiniciar{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: rgb(209, 255, 2);
+    color: #3b0063;
+    font-size: Arcade;
+    font-family: inherit;
+    padding: 2rem 3rem;
+    cursor: pointer;
+}
+
+.boton:hover {
+    transform: scale(1.05); /* Aumentar ligeramente el tamaño */
+    box-shadow: 0 0 1px rgba(240, 255, 108, 0.8); /* Agregar una sombra */
 }
