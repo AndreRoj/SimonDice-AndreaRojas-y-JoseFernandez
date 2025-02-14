@@ -184,3 +184,51 @@ p{
     transform: scale(1.05); /* Aumentar ligeramente el tamaño */
     box-shadow: 0 0 1px rgba(240, 255, 108, 0.8); /* Agregar una sombra */
 }
+
+.jugadores {
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
+    color: rgb(209, 255, 2);
+    border: solid red;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: rgb(209, 255, 2);
+    color: #3b0063;
+    font-size: Arcade;
+    font-family: inherit;
+    padding: 2rem 3rem;
+    cursor: pointer;
+}
+
+.ir{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: rgb(209, 255, 2);
+    color: #3b0063;
+    font-size: Arcade;
+    font-family: inherit;
+    padding: 2rem 3rem;
+    cursor: pointer;
+}
+.salir{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: rgb(209, 255, 2);
+    color: #3b0063;
+    font-size: Arcade;
+    font-family: inherit;
+    padding: 2rem 3rem;
+    cursor: pointer;
+}

@@ -2,16 +2,54 @@
 let lista = []
 let listaUsuario = []
 let juegoActivo = true; // Variable para controlar si el juego está activo
+let nombre = ''
+mostrarSeccion1()
 
-const colores = {
-    rojo : 1,
-    verde : 2,
-    azul: 3,
-    amarillo: 4
-};
+function mostrarSeccion2() {
+    nombre = document.getElementById('name').value
+    let n = document.querySelector('.jugador')
+    n.textContent = `Jugador: ${nombre}`;
 
-console.log(lista)
-console.log(colores)
+    document.querySelector('.pagina1').style.display = 'none';
+    document.querySelector('.pagina2').style.display = 'block';
+  }
+
+  function mostrarSeccion1() {
+    document.querySelector('.pagina2').style.display = 'none';
+    document.querySelector('.pagina1').style.display = 'block';
+
+  }
+
+
+let ir = document.querySelector(".ir");
+ir.addEventListener('click', () => {
+    cargarJugadores()
+    iniciarb.classList.remove('oculto');
+    reiniciarb.classList.add('oculto');
+    mostrarSeccion2()
+
+
+}
+
+)
+
+;
+
+let salir = document.querySelector(".salir");
+
+
+salir.addEventListener('click', () => {
+    salirJuego()
+    mostrarSeccion1()
+
+});
+
+
+function salirJuego() {
+    juegoActivo = false; // Detener el juego
+    alert('Byeee'); // Mostrar alerta al usuario
+    reiniciarb.classList.remove('oculto');
+}
 
 const sonidoGameStar = new Audio('gamestar.mp3');
 const sonidoGameOver = new Audio('sound-pacman-died.mp3');
@@ -99,8 +137,15 @@ function finalizarJuego() {
     console.log('¡Game Over!'); // Mostrar mensaje de fin del juego
     alert('¡Game Over! Presiona "reiniciar" para jugar de nuevo.'); // Mostrar alerta al usuario
     reiniciarb.classList.remove('oculto');
-    r = 0;
+
+    if (localStorage.getItem(nombre) < r){
+
+        localStorage.setItem(nombre, r)
+    }
+    cargarJugadores()
+    console.log(localStorage)
 }
+
 
 // Función para manejar los clics en los botones
 function manejarClick(color) {
@@ -124,7 +169,7 @@ function manejarClick(color) {
             mostrarSecuencia(lista); // Mostrar la nueva secuencia
             r++;
             let rondas = document.querySelector(".rondas");
-            rondas.textContent = `Rondas: ${r}`
+            rondas.textContent = `Rondas: ${r}`;
         }, 1000);
     }
 }
@@ -133,11 +178,11 @@ function manejarClick(color) {
 botonRojo.addEventListener('click', () => {
     sonidoRojo.play();
     manejarClick(1);
-})
+});
 botonVerde.addEventListener('click', () => {
     sonidoVerde.play();
     manejarClick(2);
-})
+});
 botonAzul.addEventListener('click', () => {
     sonidoAzul.play();
     manejarClick(3);
@@ -162,9 +207,9 @@ function iniciar() {
     
     mostrarSecuencia(lista);
     // r++
-    let rondas = document.querySelector(".rondas");
-    rondas.textContent = `Rondas: ${r}`;
-        
+    // let rondas = document.querySelector(".rondas");
+    // rondas.textContent = Rondas: ${r};
+    
 }
 
 // Botón de reiniciar
@@ -174,16 +219,23 @@ reiniciarb.classList.add('oculto');
 reiniciarb.addEventListener('click', function () {
     sonidoGameStar.play();
     setTimeout(() => {
+        cargarJugadores()
+        r = 0 
+        let rondas = document.querySelector(".rondas");
+        rondas.textContent = `Rondas: ${r}`;
         reiniciarb.classList.add('oculto');
         iniciar();
     }, 3000);
+    
 });
+
 
 // Botón de iniciar
 let iniciarb = document.querySelector(".iniciar");
 iniciarb.addEventListener('click', function () {
     sonidoGameStar.play();
     setTimeout(() => {
+        cargarJugadores()
         iniciarb.classList.add('oculto');
         iniciar();
     }, 3000);
@@ -191,3 +243,55 @@ iniciarb.addEventListener('click', function () {
 });
 
 
+
+function cargarJugadores() {
+    const listaJugadores = document.querySelector("#tabla-jugadores ul");
+    listaJugadores.innerHTML = "";
+
+    // 1. Crear un array para almacenar los jugadores
+    const jugadores = [];
+
+    // 2. Iterar sobre localStorage y crear objetos jugador
+    for (let i = 0; i < localStorage.length; i++) {
+        const clave = localStorage.key(i);
+        const valor = localStorage.getItem(clave);
+
+        //  Verificar si el valor es un número antes de parsearlo. Si no lo es, usa 0
+        const puntuacion = isNaN(parseInt(valor)) ? 0 : parseInt(valor);
+
+        jugadores.push({ nombre: clave, puntuacion: puntuacion });
+    }
+
+    // 3. Ordenar el array de jugadores por puntuación (mayor a menor)
+    jugadores.sort((a, b) => b.puntuacion - a.puntuacion);
+
+    // 4.  Agregar los jugadores ordenados al <ul>
+    jugadores.forEach(jugador => {
+        const li = document.createElement("li");
+        li.textContent = `${jugador.nombre}: ${jugador.puntuacion} puntos`;
+        listaJugadores.appendChild(li);
+    });
+}
+
+// function cargarJugadores() {
+//     // Obtener el contenedor de la lista de jugadores
+//     const listaJugadores = document.querySelector("#tabla-jugadores ul");
+
+//     // Limpiar la lista antes de agregar nuevos elementos
+//     listaJugadores.innerHTML = "";
+
+//     // Obtener los datos del localStorage
+    
+//     console.log(localStorage)
+
+//     for (let i = 0; i < localStorage.length; i++) {
+//         const clave = localStorage.key(i);
+//         const valor = localStorage.getItem(clave);
+//         console.log(clave + ': ' + valor);
+//         const li = document.createElement("li");
+//         li.textContent = ${clave}: ${valor} puntos;
+//         listaJugadores.appendChild(li);
+//       }
+
+    
+// }
