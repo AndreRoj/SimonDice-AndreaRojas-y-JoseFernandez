@@ -135,9 +135,9 @@ function iniciar() {
 
     
     mostrarSecuencia(lista);
-    r++
-    let rondas = document.querySelector(".rondas");
-    rondas.textContent = `Rondas: ${r}`;
+    // r++
+    // let rondas = document.querySelector(".rondas");
+    // rondas.textContent = `Rondas: ${r}`;
     
 }
 
