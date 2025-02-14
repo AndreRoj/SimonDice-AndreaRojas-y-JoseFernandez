@@ -13,6 +13,8 @@ const colores = {
 console.log(lista)
 console.log(colores)
 
+const sonidoGameStar = new Audio('gamestar.mp3');
+const sonidoGameOver = new Audio('sound-pacman-died.mp3');
 const sonidoRojo = new Audio('the-sound-of-the-note-do.mp3');
 const sonidoVerde = new Audio('the-sound-of-the-note-la.mp3');
 const sonidoAzul = new Audio('the-sound-of-the-note-mi.mp3');
@@ -93,6 +95,7 @@ function compararListas() {
 // Función para finalizar el juego
 function finalizarJuego() {
     juegoActivo = false; // Detener el juego
+    sonidoGameOver.play();
     console.log('¡Game Over!'); // Mostrar mensaje de fin del juego
     alert('¡Game Over! Presiona "reiniciar" para jugar de nuevo.'); // Mostrar alerta al usuario
     reiniciarb.classList.remove('oculto');
@@ -169,16 +172,21 @@ let reiniciarb = document.querySelector(".reiniciar");
 reiniciarb.classList.add('oculto');
 
 reiniciarb.addEventListener('click', function () {
-    reiniciarb.classList.add('oculto');
-    iniciar();
-    
+    sonidoGameStar.play();
+    setTimeout(() => {
+        reiniciarb.classList.add('oculto');
+        iniciar();
+    }, 3000);
 });
 
 // Botón de iniciar
 let iniciarb = document.querySelector(".iniciar");
 iniciarb.addEventListener('click', function () {
-    iniciarb.classList.add('oculto');
-    iniciar();
+    sonidoGameStar.play();
+    setTimeout(() => {
+        iniciarb.classList.add('oculto');
+        iniciar();
+    }, 3000);
     
 });
 
