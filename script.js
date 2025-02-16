@@ -1,7 +1,7 @@
 'use strict';
 let lista = []
 let listaUsuario = []
-let juegoActivo = true; // Variable para controlar si el juego está activo
+let juegoActivo = true; // para controlar si el juego está activo
 let nombre = ''
 mostrarSeccion1()
 
@@ -37,7 +37,6 @@ ir.addEventListener('click', () => {
 
 let salir = document.querySelector(".salir");
 
-
 salir.addEventListener('click', () => {
     salirJuego()
     mostrarSeccion1()
@@ -47,7 +46,7 @@ salir.addEventListener('click', () => {
 
 function salirJuego() {
     juegoActivo = false; // Detener el juego
-    alert('Byeee'); // Mostrar alerta al usuario
+    alert('Vuelve Pronto!'); // Mostrar alerta al usuario
     reiniciarb.classList.remove('oculto');
 }
 
@@ -273,25 +272,3 @@ function cargarJugadores() {
     });
 }
 
-// function cargarJugadores() {
-//     // Obtener el contenedor de la lista de jugadores
-//     const listaJugadores = document.querySelector("#tabla-jugadores ul");
-
-//     // Limpiar la lista antes de agregar nuevos elementos
-//     listaJugadores.innerHTML = "";
-
-//     // Obtener los datos del localStorage
-    
-//     console.log(localStorage)
-
-//     for (let i = 0; i < localStorage.length; i++) {
-//         const clave = localStorage.key(i);
-//         const valor = localStorage.getItem(clave);
-//         console.log(clave + ': ' + valor);
-//         const li = document.createElement("li");
-//         li.textContent = ${clave}: ${valor} puntos;
-//         listaJugadores.appendChild(li);
-//       }
-
-    
-// }

@@ -12,7 +12,6 @@ body{
     grid-template-columns: repeat(2, 190px); 
     grid-template-rows: repeat(2, 180px); 
     gap: 0; 
-    border: solid red;
     margin-top: 20px; 
     margin-bottom: 50px;
     
@@ -26,7 +25,8 @@ body{
 
 h1{
     background-clip: text; 
-    color: rgb(209, 255, 2);; 
+    color: rgb(209, 255, 2);
+    border: outset rgb(209, 255, 2);
 }
 
 
@@ -35,7 +35,9 @@ h1{
     flex-direction: row;
     justify-content: space-between;
     width: 60%;
-    border: solid red;
+    border: dashed rgb(209, 255, 2);
+    border-width: 4px;
+
 }
 
 
@@ -47,7 +49,6 @@ h2{
 
 p{
     color: rgb(209, 255, 2);
-    border: solid red;
     text-align: center;
 }
 
@@ -190,7 +191,7 @@ p{
     height: 100%;
     margin-top: 20px;
     color: rgb(209, 255, 2);
-    border: solid red;
+    border: dashed rgb(209, 255, 2);
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -232,3 +233,29 @@ p{
     padding: 2rem 3rem;
     cursor: pointer;
 }
+
+footer{
+    margin-top: 20px;
+}
+
+@media (max-width: 767px) {
+    .h2{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 60%;
+        border: dashed rgb(209, 255, 2);
+        border-width: 4px;
+    
+    }
+
+
+
+    body {
+      font-size: 16px;
+    }
+    .contenedor {
+      width: 90%;
+    }
+
+  }
