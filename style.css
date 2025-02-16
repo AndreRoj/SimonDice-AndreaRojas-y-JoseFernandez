@@ -27,6 +27,7 @@ h1{
     background-clip: text; 
     color: rgb(209, 255, 2);
     border: outset rgb(209, 255, 2);
+    text-align: center;
 }
 
 
